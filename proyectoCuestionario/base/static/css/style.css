@@ -1,0 +1,522 @@
+/*
+	* BlockSphere Main CSS
+	* v1.0
+*/
+
+/* *********************************************** */
+/* ******************* COLORS ******************** */
+/* *********************************************** */
+/* 
+
+	colors:
+		primary: #01789D;
+		secondary: #3CAB9A;
+		black:     #201E1F;
+		white:     #2CA591;
+
+*/
+
+.btn-primary {
+	background-color: #01789D;
+	border-color: #01789D;
+}
+
+
+/* *********************************************** */
+/* *************** GENERAL STYLES **************** */
+/* *********************************************** */
+
+body {
+	font-family: 'Titillium Web', sans-serif;
+	background-color: #fff;
+}
+
+
+img{
+	width: 100%;
+    height: auto;
+}
+
+/* *********************************************** */
+/* **************** INDEX PAGE ***************** */
+/* *********************************************** */
+
+.index{
+	height: 100%;
+	background:none !important;
+}
+
+.index h1{
+	color:black;
+}
+
+.span-width{
+	width: 30%;
+	display: inline-block;
+    position: relative;
+}
+
+
+
+/* *********************************************** */
+/* **************** SIGN UP PAGE ***************** */
+/* *********************************************** */
+.bg-primary{
+	background-color: #20a8d8 !important;
+}
+
+.btn-primary{
+	background-color: #20a8d8 !important;
+	border-style: none;
+	border-color: none;
+}
+
+.button-register{
+	border-radius: 1px;
+}
+
+.button-signin{
+	display: block;
+	border-radius: 1px;
+}
+
+.button-signup{
+	background-color: #1b8eb7 !important;
+	border-style: solid;
+	border-color: #1985ac !important;
+	border-radius: 1px;
+}
+
+.card-signin{
+	border: 1px solid #c2cfd6;
+	border-radius: 1px;
+}
+
+.card-signup{
+	border-radius: 1px;
+}
+
+
+.container .container-margin{
+	margin: 13% auto;
+}
+
+.input-group span{
+	border-radius: 1px;
+}
+
+.input-group .form-control{
+	width: 100% !important;
+	border-radius: 1px;
+}
+
+.form-group-register{
+	width: 90%;
+}
+
+.logo-signin {
+	position: relative;
+	max-width: 80%;
+	margin: 0 10% 32px;
+}
+
+.logo-signin > img {
+	width: 60%;
+}
+
+.sign_form {
+	background-image: url("../img/Earth-Networks.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-blend-mode: soft-light;
+	background-color: #01789D;
+
+	/* background: -webkit-gradient(linear, left, right, from(#3CAB9A), to(#01789D));
+	background: -webkit-linear-gradient(left, #3CAB9A, #01789D);
+	background: -moz-linear-gradient(left, #3CAB9A, #01789D);
+	background: linear-gradient(to right, #3CAB9A, #01789D); */
+}
+
+.sign_form *, .sign_form *:before, .sign_form *:after {
+	box-sizing: border-box;
+}
+
+.sign_form a {
+	text-decoration: none;
+	color: #01789D;
+	-webkit-transition: .5s ease;
+	transition: .5s ease;
+}
+.sign_form a:hover {
+	color: #3CAB9A;
+}
+
+.sign_form .form {
+	background: white;
+	padding: 40px;
+	max-width: 550px;
+	margin: 40px auto;
+	border-radius: 4px;
+	box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sign_form .tab-group {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 40px 0;
+}
+.sign_form .tab-group:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.sign_form .tab-group li a {
+	display: block;
+	text-decoration: none;
+	padding: 15px;
+	background: #E7ECEB;
+	color: #a0b3b0;
+	font-size: 20px;
+	float: left;
+	width: 50%;
+	text-align: center;
+	cursor: pointer;
+	-webkit-transition: .5s ease;
+	transition: .5s ease;
+}
+.sign_form .tab-group li a:hover {
+	background-color: #3CAB9A;
+	color: #ffffff;
+}
+.sign_form .tab-group .active a {
+	background-color: #01789D;
+	color: #ffffff;
+}
+
+.sign_form .tab-content > div:last-child {
+	display: none;
+}
+
+.sign_form h2 {
+	text-align: center;
+	color: #201E1F;
+	font-weight: 300;
+	margin: 0 0 40px;
+}
+
+.sign_form label {
+	font-size: 14px;
+	color: #201E1F;
+	-webkit-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+	-webkit-backface-visibility: hidden;
+	pointer-events: none;
+}
+.sign_form label .req {
+	margin: 2px;
+	color: #01789D;
+}
+
+.sign_form label.active .req {
+	opacity: 0;
+}
+
+.sign_form label.highlight {
+	color: #201E1F;
+}
+
+.sign_form input, .sign_form textarea {
+	font-size: 16px;
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 5px 10px;
+	background: rgba(255, 255, 255, 0.025);;
+	background-image: none;
+	background-color: rgba(0, 0, 0, 0.1);
+	border: none;
+	color: #201E1F;
+	border-radius: 0;
+	-webkit-transition: border-color .25s ease, box-shadow .25s ease;
+	transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+.sign_form input::placeholder, .sign_form textarea::placeholder {
+	font-size: 16px;
+	color: rgba(255, 255, 255, 0.3);
+}
+.sign_form input:focus, textarea:focus {
+	outline: 0;
+	border-color: #01789D;
+}
+
+.sign_form textarea {
+	border: 2px solid #a0b3b0;
+	resize: vertical;
+}
+
+.sign_form .field-wrap {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.sign_form .top-row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.sign_form .top-row > div {
+	float: left;
+	width: 48%;
+	margin-right: 4%;
+}
+.sign_form .top-row > div:last-child {
+	margin: 0;
+}
+
+.sign_form .button {
+	border: 0;
+	outline: none;
+	border-radius: 0;
+	padding: 15px 0;
+	font-size: 2rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	background: -webkit-gradient(linear, left, right, from(#3CAB9A), to(#01789D));
+	background: -webkit-linear-gradient(left, #3CAB9A, #01789D);
+	background: -moz-linear-gradient(left, #3CAB9A, #01789D);
+	background: linear-gradient(to right, #3CAB9A, #01789D);
+	color: #ffffff;
+	-webkit-transition: all 1s ease;
+	transition: all 1s ease;
+	-webkit-appearance: none;
+	cursor: pointer;
+}
+.sign_form .button:hover, .button:focus {
+	background: -webkit-gradient(linear, left, right, from(#01789D), to(#01789D));
+	background: -webkit-linear-gradient(left, #01789D, #01789D);
+	background: -moz-linear-gradient(left, #01789D, #01789D);
+	background: linear-gradient(to right, #01789D, #01789D);
+}
+
+.sign_form .button-block {
+	display: block;
+	width: 100%;
+}
+
+.sign_form .forgot {
+	margin-top: 5px;
+	text-align: right;
+}
+
+/* *********************************************** */
+/* **************** PROFILE PAGE ***************** */
+/* *********************************************** */
+
+.side-left, .side-right{
+	display: inline-block;
+}
+
+.card-width{
+	width: 60%;
+}
+
+.button-back{
+	margin-left: 98%;
+	width: 50%;
+}
+/* *********************************************** */
+/* ************** DASHBOARD HEADER *************** */
+/* *********************************************** */
+
+#dashboard-header .nav.navbar-nav.ml-auto {
+	padding-right: 15px;
+}
+
+/* *********************************************** */
+/* ***************** DATATABLES ****************** */
+/* *********************************************** */
+
+.pagination .page-link {
+	border-radius: 0px !important;
+}
+
+/* *********************************************** */
+/* ***************** BREADCRUMB ****************** */
+/* *********************************************** */
+
+.breadcrumb-item.active a {
+	text-decoration: none;
+}
+
+.breadcrumb-item.active a,
+.breadcrumb-item.active a:active,
+.breadcrumb-item.active a:visited {
+    color: #536c79;
+}
+
+.breadcrumb-item.active a:focus,
+.breadcrumb-item.active a:hover {
+    color: #20a8d8;
+}
+
+
+/* *********************************************** */
+/* ************** SIDEBAR ************************ */
+/* *********************************************** */
+
+#icon-list i, #icon-list {
+	color: white;
+	font-size: 1.1rem;
+	text-decoration: none;
+}
+
+#icon-logout i, #icon-logout {
+	color: white;
+	font-size: 1.3rem;
+	text-decoration: none;
+	padding-top: 15px;
+}
+
+.icon-logout-padding{
+	padding-top: 15%;
+}
+
+#icon-user i, #icon-user {
+	color: white;
+	font-size: 1.1rem;
+	text-decoration: none;
+}
+
+.icons-user-list{
+	padding-top: 40%;
+}
+
+.text-center-welcome{
+	width: 100px;
+	margin-left: 35%;
+	margin-top: 15%;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #3D3D3E;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+
+.circle{
+	background-image: url("/base/static/img/turpial_isotipo-03.png");
+	width: 180px;
+	height: 180px;
+	border-radius: 50%;
+	margin: 10% auto;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 0px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a, .sidebar-nav li h3, .sidebar-nav li h4, .sidebar-nav li h5{
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav>.sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+.sidebar-nav>.sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav>.sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+
+
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 0;
+  }
+  #wrapper.toggled {
+    padding-left: 250px;
+  }
+  #sidebar-wrapper {
+    width: 0;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+  }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}

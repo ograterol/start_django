@@ -1,0 +1,44 @@
+{% load i18n %}
+
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link{% block dashboard_sidebar_menu_is_active %} active{% endblock dashboard_sidebar_menu_is_active %}" href="{% url 'dashboard' %}"><i class="icon-home"></i> {% trans 'Dashboard' %}</a>
+            </li>
+            <li class="nav-title">
+                {% trans 'Users' %}
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-user"></i> {% trans 'Users' %} </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans 'List Users' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans 'Create User' %}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'transaction:create' %}"><i class="icon-direction"></i>{% trans 'Buy Sferas' %}</a>
+            </li>
+            <li class="divider"></li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'kyc:info' %}"><i class="icon-info"></i>{% trans 'Update my info' %}</a>
+            </li>
+            <li class="divider"></li>
+            <li class="nav-title">
+                {% trans 'Transactions' %}
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-refresh"></i> {% trans 'Transactions' %}</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link {% block transaction_sidebar_menu_is_active %}{% endblock transaction_sidebar_menu_is_active %}" href="{% url 'transaction:list' %}"><i class="icon-list"></i> {% trans 'List Transactions' %}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>

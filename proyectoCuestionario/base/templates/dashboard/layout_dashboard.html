@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static i18n bootstrap4 %}
+
+{% block html_id %}dashboard-main-html{% endblock html_id %}
+
+{% block page_baseline_title %} | {% trans "Dashboard" %}{% endblock page_baseline_title %}
+
+{% block css_post_main %}
+    <link href="{% static 'core_ui/css/style.min.css' %}" rel="stylesheet">
+{% endblock css_post_main %}
+
+{% block body_id %}dashboard-main-body{% endblock body_id %}
+{% block body_class %}app header-fixed sidebar-fixed{% endblock body_class %}
+
+{% block header %}
+    <header id="dashboard-header" class="app-header navbar">
+        <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <button class="navbar-toggler sidebar-minimizer d-md-down-none" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <img src="{% static 'core_ui/img/avatars/6.jpg' %}" class="img-avatar" alt="">
+                <span class="d-md-down-none">Base</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header text-center">
+                    <strong>{% trans "Account" %}</strong>
+                </div>
+                <a class="dropdown-item" href="#"><i class="fa fa-user"></i>{% trans "Profile" %}</a>
+                <a class="dropdown-item" href="{% url 'users:signout' %}"><i class="fa fa-lock"></i>{% trans "Logout" %}</a>
+            </div>
+          </li>
+        </ul>
+    </header>
+{% endblock header %}
+{% block main_content %}
+    <div class="app-body">
+        {% block sidebar %}
+            {% include "dashboard/partials/_sidebar.html" %}
+        {% endblock sidebar %}
+
+        <main id="main" class="main">
+            {% block content_before_main %}
+                <!-- Breadcrumb -->
+                {% block breadcrumb %}
+                    <ol class="breadcrumb">
+                        {% block breadcrumb_content %}
+                            <li class="breadcrumb-item {% block dashboard_breadcrumb_link_is_active %}active{% endblock dashboard_breadcrumb_link_is_active %}">
+                                <a href="{% url 'dashboard' %}">
+                                    {% trans "Dashboard" %}
+                                </a>
+                            </li>
+                        {% endblock breadcrumb_content %}
+                    </ol>
+                {% endblock breadcrumb %}
+            {% endblock content_before_main %}
+
+            {% block main_box %}
+                <div class="container-fluid">
+                    <div class="animated fadeIn">
+                        {% block main %}
+                        {% endblock main %}
+                    </div>
+                </div>
+            {% endblock main_box %}
+
+            {% block content_after_main %}
+            {% endblock content_after_main %}
+        </main>
+    </div>
+{% endblock main_content %}
+{% block footer %}
+    <footer class="app-footer">
+        <span class="text-muted">
+            &copy; {% now "Y" %} Turpial Technologies C.A. &nbsp;
+            <a href="#">{% trans "Privacy Policy" %}</a> | <a href="#">{% trans "Terms" %} &amp; {% trans "Conditions" %}</a></span>
+        </span>
+    </footer>
+{% endblock footer %}
+
+{% block js_post_main %}
+    <!-- GenesisUI main scripts -->
+    <script src="{% static 'core_ui/js/app.js' %}"></script>
+{% endblock js_post_main %}

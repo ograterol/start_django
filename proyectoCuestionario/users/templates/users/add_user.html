@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block  page_title %} Add User {% endblock %}
+
+	{% block main_content %}
+		<div class="container">
+			<div class="container-margin">
+				<div class="row justify-content-center">
+					<div class="card card-width">
+						<div class="card-header">
+	    					<h3> Add New User</h3>
+	  					</div>
+	  					<div class="card-block">
+							<form action="{% url 'user:add-user' %}" method="post">
+								<div class="row">
+							    	<div class="col-md-7">
+		  								<div class="col-12">
+				  							<div class="side-left">
+				  							{% csrf_token %}
+				  								{% bootstrap_field form.username show_help=False form_group_class="form-group-register" %}
+
+												{% bootstrap_field form.first_name show_help=False form_group_class="form-group-register" %}
+
+												{% bootstrap_field form.last_name show_help=False form_group_class="form-group-register" %}
+
+												{% bootstrap_field form.email show_help=False form_group_class="form-group-register" %}
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5">
+										<div class="col-12">
+											<div class="side-right">
+												<img src="/base/static/img/turpial_isotipo-03.png" class="img-circle" alt="" width="304" height="236"> 
+											</div>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-md-4">
+									</div>
+									<div class="col-md-4">
+										<button type="submit" value="Update" class="btn btn-block btn-success button-register">Create User</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

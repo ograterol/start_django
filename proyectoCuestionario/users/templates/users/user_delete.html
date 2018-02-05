@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block  page_title %} Delete {% endblock %}
+
+	{% block main_content %}
+		<div class="container">
+			<div class="container-margin">
+				<div class="row justify-content-center">
+					<div class="card card-width">
+						<div class="card-header">
+	    					<h3> Delete User </h3>
+	  					</div>
+	  					<div class="card-block">
+							<form action="" method="post">
+								<div class="row">
+									{% csrf_token %}
+							    	<div class="col-md-2">
+		  								
+									</div>
+									<div class="col-md-8">
+		  								<h5>Deleting User <b>{{ user.username }} </b> will remove all his information from our database. This can't be undone </h5>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-md-4">
+									</div>
+									<div class="col-md-4">
+										<button type="submit" value="Update" class="btn btn-block btn-danger button-register">Delete</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

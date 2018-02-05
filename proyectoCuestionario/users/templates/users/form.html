@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+	{% block  page_title %} Login {% endblock %}
+	
+	{% block main_content %}
+		<div class="container">
+			<div class="container-margin">
+				<div class="row justify-content-center">
+				    <div class="col-md-8">
+						<div class="card-group mb-0">
+							<div class="card p-4 card-signin">
+								<div class="card-body">
+									<h1>Login</h1>
+									<p class="text-muted"> Sign In your account</p>
+									<form method="post">
+										{% csrf_token %}
+										<div class="input-group mb-3">
+											<span class="input-group-addon">
+												<i class="icon-user"></i>
+											</span>
+											{% bootstrap_field form.username show_label=False form_group_class="" %}
+										</div>
+										<div class="input-group mb-4">
+											<span class="input-group-addon">
+												<i class="icon-lock"></i>
+											</span>
+											{% bootstrap_field form.password show_label=False  form_group_class=""%}
+										</div>
+										<div class="row">
+											<div class="col-6">
+												<button  class="btn btn-primary px-4 button-signin" type="submit">Login</button>
+											</div>
+											<div class="col-6 text-right">
+												<button  class="btn btn-link px-0" type="button">Forgot password?</button>
+											</div>
+										</div>	
+									</form>
+								</div>	
+							</div>
+							<div class="card text-white bg-primary py-5 d-md-down-none card-signup">
+								<div class="card-body text-center">
+									<div>
+										<h2>Sign up</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+										<!-- <button type="button" class="btn btn-primary mt-3 button-signup">Register Now!</button> -->
+										<a href="{% url 'user:register' %}" class="btn btn-primary mt-3 button-signup" role="button">Register Now!</a>
+									</div>
+								</div>							
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

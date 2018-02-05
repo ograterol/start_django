@@ -1,0 +1,70 @@
+{% load static i18n %}
+
+<!DOCTYPE html>
+<html id="{% block html_id %}html{% endblock html_id %}" class="{% block html_class %}html{% endblock html_class %}" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="{% block http_content %}IE=edge{% endblock http_content %}">
+        <meta name="viewport" content="{% block viewport_content %}width=device-width, initial-scale=1{% endblock viewport_content %}">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <meta name="description" content="{% block description %}{% endblock description %}">
+        <meta name="author" content="{% block author %}{% endblock author %}">
+        <link rel="icon" href="{% block favicon %}{% static 'core_ui/img/favicon.ico' %}{% endblock favicon %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'core_ui/css/style.css' %}" />
+        <meta name="keywords" content="{% block keywords %}{% endblock keywords %}">
+
+        {% block extra_metatags %}{% endblock extra_metatags %}
+
+        <title>
+            {% block page_title %}{% trans "Base" %}{% endblock page_title %}
+            {% block page_baseline_title %} | {% trans "Home" %}{% endblock page_baseline_title %}
+        </title>
+
+        {% block js_pre_css %}{% endblock js_pre_css %}
+
+        {% block css_pre_main %}{% endblock css_pre_main %}
+
+        <!-- External resources -->
+        <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+        <!-- Main CSS -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/simple-line-icons.css' %}" rel="stylesheet">
+
+        {% block css_post_main %}{% endblock css_post_main %}
+
+        {% block extra_header_js %}{% endblock extra_header_js %}
+
+        <!-- Custom CSS -->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        
+    </head>
+    <body id="{% block body_id %}{% endblock body_id %}" class="{% block body_class %}{% endblock body_class %}">
+        {% block header %}{% endblock header %}
+
+        {% block title %}
+
+        {% endblock %}
+
+        {% block main_content %}{% endblock main_content %}
+
+        {% block footer %}{% endblock footer %}
+
+        <!-- Extra styles for any given template -->
+        {% block before_js_css %}{% endblock before_js_css %}
+        {% block js_pre_main %}{% endblock js_pre_main %}
+
+        <!-- Main CSS -->
+        <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+        <!-- Extra JS for any given template -->
+        {% block js_post_main %}{% endblock js_post_main %}
+        <!-- Extra styles for any given template that has to be loaded after a JS file -->
+        {% block after_js_css %}{% endblock after_js_css %}
+    </body>
+</html>
