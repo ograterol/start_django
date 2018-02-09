@@ -16,9 +16,17 @@ from django.views.generic import (
     UpdateView,
     ListView,
     DeleteView)
+from django.utils.translation import gettext as _
 from django.urls import reverse_lazy
 
-# local Django
+# Rest_Framework
+from rest_framework import parsers, status, renderers
+from rest_framework.authtoken.models import Token
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.authtoken.views import ObtainAuthToken
+
+# Local Django
 from base.mixin import StaffRequiredMixin, UserPerfilMixin
 
 from .forms import (
@@ -26,6 +34,10 @@ from .forms import (
     RegisterUserForm,
     UserUpdateForm,
     AddUserForm
+)
+
+from .serializers import (
+    AuthCustomTokenSerializer
 )
 
 
@@ -143,3 +155,51 @@ class UserDeleteView(StaffRequiredMixin, DeleteView):
     model = get_user_model()
     template_name = "users/user_delete.html"
     success_url = reverse_lazy('user:user-list')
+
+
+class Login(ObtainAuthToken, APIView):
+
+    serializer_class = AuthCustomTokenSerializer
+
+    def post(self, request, *args, **kwargs):
+        print("hola1")
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        if serializer.is_valid():
+            print("hola2")
+            user = serializer.data['user']
+            password = serializer.data['password']
+            new_user = authenticate(username=user, password=password)
+            print(new_user)
+
+            if new_user:
+                print("hola3")
+                if new_user.is_active:
+                    print("hola4")
+                    token, created = Token.objects.get_or_create(
+                        user=new_user)
+
+                    return Response(
+                        {
+                            'created': created,
+                            'token': token.key,
+                        }
+                    )
+                else:
+                    content = {'detail': _('User account not active.')}
+                    return Response(
+                        content,
+                        status=status.HTTP_401_UNAUTHORIZED
+                    )
+            else:
+                content = {
+                    'detail': _('Unable to login with provided credentials.')
+                }
+                return Response(content, status=status.HTTP_401_UNAUTHORIZED)
+
+        else:
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )

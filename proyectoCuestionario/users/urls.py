@@ -6,7 +6,8 @@ from views import (
     UserDetailView,
     UserUpdateView,
     UserDeleteView,
-    AddUserView
+    AddUserView,
+    Login
 )
 
 urlpatterns = [
@@ -54,5 +55,10 @@ urlpatterns = [
         r'^add_User/$',
         view=AddUserView.as_view(),
         name='add-user'
+    ),
+    url(
+        r'^login_angular/$',
+        view=Login.as_view(),
+        name='login_angular'
     ),
 ]

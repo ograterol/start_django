@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 DJANGO_APPS = [
@@ -44,6 +43,8 @@ THIRD_PARTY_APPS = [
     'debug_toolbar',
     'guardian',
     'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MY_APPS = [
@@ -54,8 +55,11 @@ MY_APPS = [
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -64,6 +68,8 @@ MIDDLEWARE = [
 
     # debug toolbar middleware
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+
+
 ]
 
 ROOT_URLCONF = 'base.urls'
@@ -121,6 +127,43 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Angular
+
+#CORS_ORIGIN_ALLOW_ALL = True
+
+# White list of apps that will consume this Backend server
+CORS_ORIGIN_WHITELIST = [
+    'localhost:4200',
+    'localhost:8100',
+]
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
+
+CORS_ALLOW_CREDENTIALS = True
+
+# DRF
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+}
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -137,8 +180,8 @@ USE_TZ = True
 AUTH_USER_MODEL = 'users.User'
 
 AUTHENTICATION_BACKENDS = (
-   'django.contrib.auth.backends.ModelBackend',
-   'guardian.backends.ObjectPermissionBackend'
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend'
 )
 
 
@@ -159,3 +202,5 @@ try:
     from .local_settings import *  # we import all definition in local_settings
 except Exception as e:
     pass
+
+
