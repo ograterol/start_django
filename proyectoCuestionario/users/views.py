@@ -36,8 +36,11 @@ from .forms import (
     AddUserForm
 )
 
+from .models import User
+
 from .serializers import (
-    AuthCustomTokenSerializer
+    AuthCustomTokenSerializer,
+    UsersSerializer
 )
 
 
@@ -158,27 +161,74 @@ class UserDeleteView(StaffRequiredMixin, DeleteView):
 
 
 class Login(ObtainAuthToken, APIView):
+    """
+    Display the login form and handle the register action with Angular v4.
+    """
 
     serializer_class = AuthCustomTokenSerializer
 
     def post(self, request, *args, **kwargs):
-        print("hola1")
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         if serializer.is_valid():
-            print("hola2")
             user = serializer.data['user']
             password = serializer.data['password']
             new_user = authenticate(username=user, password=password)
-            print(new_user)
 
             if new_user:
-                print("hola3")
-                if new_user.is_active:
-                    print("hola4")
+                token, created = Token.objects.get_or_create(
+                    user=new_user)
+
+                return Response(
+                    {
+                        'created': created,
+                        'token': token.key,
+                    }
+                )
+            else:
+                content = {
+                    'detail': _('Unable to login with provided credentials.')
+                }
+                return Response(content, status=status.HTTP_401_UNAUTHORIZED)
+
+        else:
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+
+class Register(ObtainAuthToken, APIView):
+    """
+    Display the register form and handle the register action with Angular v4.
+    """
+
+    serializer_class = UsersSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        if serializer.is_valid():
+            user = serializer.data['user']
+            password = serializer.data['password']
+            password2 = serializer.data['password2']
+
+            if password and password2 and password != password2:
+                content = {
+                    'detail': _('Passwords do not match.')
+                }
+                return Response(content, status=status.HTTP_401_UNAUTHORIZED)
+            else:
+                new_user = User(username=user)
+                new_user.set_password(password)
+                new_user.save()
+                new_auth = authenticate(username=user, password=password)
+
+                if new_auth:
                     token, created = Token.objects.get_or_create(
-                        user=new_user)
+                        user=new_auth)
 
                     return Response(
                         {
@@ -187,16 +237,11 @@ class Login(ObtainAuthToken, APIView):
                         }
                     )
                 else:
-                    content = {'detail': _('User account not active.')}
-                    return Response(
-                        content,
-                        status=status.HTTP_401_UNAUTHORIZED
-                    )
-            else:
-                content = {
-                    'detail': _('Unable to login with provided credentials.')
-                }
-                return Response(content, status=status.HTTP_401_UNAUTHORIZED)
+                    content = {
+                        'detail': _('Unable to login with provided credentials.')
+                    }
+                    return Response(content,
+                                    status=status.HTTP_401_UNAUTHORIZED)
 
         else:
             return Response(
